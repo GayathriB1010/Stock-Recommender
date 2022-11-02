@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Plot from 'react-plotly.js';
 import { useState } from "react";
 
+//Component to display the stock recommendation and historic graph. For graph, the library used is plotly.js
 const StocksTable = (stocksArrayAfterCalculation) =>{
     const xAxis = stocksArrayAfterCalculation.stocksToDisplay.map((stock) =>{
         return stock.date;
@@ -12,8 +13,6 @@ const StocksTable = (stocksArrayAfterCalculation) =>{
     const signalYAxis = stocksArrayAfterCalculation.stocksToDisplay.map((stock) =>{
         return parseFloat(stock.signal).toFixed(2);
     })
-
-
        let graphData= [
           {
             x: xAxis,
