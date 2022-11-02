@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { stocks } from './data';
-import { emaCalculatingFn,previousEMA,calculateSignal } from './utils/calculations';
+import { stocks } from "./utils/data";
+import { emaCalculatingFn,previousEMA,calculateSignal,recommendationsusingMACDfn,recommendationSocialMediaFn,finalRecommendationFn } from './utils/calculations';
 import StocksTable from './StocksTable';
+import Header from './Header';
 
 const Homepage = () => {
 	//State to set the time window
@@ -18,34 +19,27 @@ const Homepage = () => {
 	//Function to display the table with stock symbol, price , date , social media count and buy/hold or sell recommendation
 	const displayTable = (e) => {
 		e.preventDefault();
-		let selectedStocks = stocks.filter((stock) => {
+        let selectedStocks = [];
+        setStocksArrayAfterCalculation(null);
+		selectedStocks = stocks.filter((stock) => {
 			return stock.stockSymbol === stockSymbol;
 		});
 		const twelveDaysEMA = previousEMA(12, selectedStocks,timeWindow,"12dayEMA");
         const twentysixDaysEMA = previousEMA(26, selectedStocks,timeWindow,"26dayEMA");
         const signal = calculateSignal(twentysixDaysEMA,timeWindow);
-        setStocksArrayAfterCalculation(signal);
-		//const twentysixDaysEMA = previousEMA(26, selectedStocks,timeWindow);
-		// const signal = 15;
-		// // moving average convergence divergence (MACD) indicator
-		// let MACD = twentysixDaysEMA - twelveDaysEMA;
-        // if(MACD < signal){
-        //     console.log("Sell");
-        // }
-        // else{
-        //     console.log("Buy");
-        // }
-        //console.log(selectedStocks)
+        const recommendationsuingMACD = recommendationsusingMACDfn(signal,timeWindow);
+        const recommendationusingSocialMedia = recommendationSocialMediaFn(recommendationsuingMACD,timeWindow);
+        const finalRecommendation = finalRecommendationFn(recommendationusingSocialMedia,timeWindow);
+        setStocksArrayAfterCalculation(finalRecommendation);
         setShowTable(true);
 	};
 
-    console.log(stocksArrayAfterCalculation);
 	return (
 		<Wrapper>
+            <Header></Header>
 			<Form onSubmit={(e) => displayTable(e)}>
-				<Header>User Input</Header>
 				<StartDate>
-					<label className="timeWindow">Time Window(0 to 20 days)</label>
+					<label className="timeWindow">Time Window(1 to 25 days)</label>
 					<Input
 						type="text"
 						className="timeWindow"
@@ -70,10 +64,10 @@ const Homepage = () => {
 					/>
 				</StockSymbol>
 				<SubmitButton>
-					<Button type="submit" id="submit">Submit</Button>
+					<Button disabled={timeWindow>25 || timeWindow<1} type="submit" id="submit">Submit</Button>
 				</SubmitButton>
-                {showTable === true? <p>{stocksArrayAfterCalculation[0]["12dayEMA"]}</p>:null}
 			</Form>
+            {showTable === true? <StocksTable stocksToDisplay={stocksArrayAfterCalculation}/>:null}
 		</Wrapper>
 	);
 };
@@ -83,17 +77,41 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	align-items: left;
 `;
-const Header = styled.div`font-size: 30px;`;
 const StartDate = styled.div``;
 const EndDate = styled.div``;
 const StockSymbol = styled.div``;
 
 const Input = styled.input`
-	padding: 10px;
-	margin: 10px;
+width: 100%;
+padding: 10px 0;
+font-size: 16px;
+color: black;
+margin-bottom: 30px;
+border: none;
+border-bottom: 1px solid black;
+outline: none;
+background: transparent;
 `;
-const Form = styled.form``;
+const Form = styled.form`
+position: absolute;
+top: 30%;
+left: 11%;
+width: 400px;
+padding: 40px;
+transform: translate(-50%, -50%);
+background: white;
+box-sizing: border-box;
+box-shadow: 0 15px 25px rgba(0,0,0,.6);
+border-radius: 10px;
+`;
 const SubmitButton = styled.div``;
-const Button = styled.button``;
-
+const Button = styled.button`
+outline: none;
+background: transparent;
+`;
+const H3 = styled.h3`
+margin-left:10px;
+margin-bottom:10px;
+font: 400 1rem Verdana, Geneva, Tahoma, sans-serif;
+`
 export default Homepage;

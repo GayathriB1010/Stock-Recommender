@@ -1531,6 +1531,336 @@ let stocks =[
         price: 455,
         socialMediaCount: 119
       },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-20',
+        price: 461,
+        socialMediaCount: 215
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-20',
+        price: 172,
+        socialMediaCount: 237
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-20',
+        price: 990,
+        socialMediaCount: 168
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-20',
+        price: 122,
+        socialMediaCount: 284
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-20',
+        price: 429,
+        socialMediaCount: 139
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-19',
+        price: 826,
+        socialMediaCount: 172
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-19',
+        price: 556,
+        socialMediaCount: 296
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-19',
+        price: 320,
+        socialMediaCount: 188
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-19',
+        price: 368,
+        socialMediaCount: 373
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-19',
+        price: 736,
+        socialMediaCount: 68
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-18',
+        price: 433,
+        socialMediaCount: 133
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-18',
+        price: 227,
+        socialMediaCount: 60
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-18',
+        price: 376,
+        socialMediaCount: 213
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-18',
+        price: 539,
+        socialMediaCount: 93
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-18',
+        price: 770,
+        socialMediaCount: 430
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-17',
+        price: 901,
+        socialMediaCount: 63
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-17',
+        price: 507,
+        socialMediaCount: 391
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-17',
+        price: 764,
+        socialMediaCount: 128
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-17',
+        price: 903,
+        socialMediaCount: 274
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-17',
+        price: 224,
+        socialMediaCount: 200
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-16',
+        price: 165,
+        socialMediaCount: 216
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-16',
+        price: 453,
+        socialMediaCount: 132
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-16',
+        price: 487,
+        socialMediaCount: 298
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-16',
+        price: 965,
+        socialMediaCount: 471
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-16',
+        price: 771,
+        socialMediaCount: 321
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-15',
+        price: 159,
+        socialMediaCount: 423
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-15',
+        price: 854,
+        socialMediaCount: 170
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-15',
+        price: 64,
+        socialMediaCount: 94
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-15',
+        price: 812,
+        socialMediaCount: 147
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-15',
+        price: 421,
+        socialMediaCount: 296
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-14',
+        price: 301,
+        socialMediaCount: 134
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-14',
+        price: 344,
+        socialMediaCount: 430
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-14',
+        price: 799,
+        socialMediaCount: 209
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-14',
+        price: 171,
+        socialMediaCount: 487
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-14',
+        price: 97,
+        socialMediaCount: 463
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-13',
+        price: 799,
+        socialMediaCount: 316
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-13',
+        price: 236,
+        socialMediaCount: 468
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-13',
+        price: 952,
+        socialMediaCount: 315
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-13',
+        price: 972,
+        socialMediaCount: 474
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-13',
+        price: 209,
+        socialMediaCount: 251
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-12',
+        price: 132,
+        socialMediaCount: 266
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-12',
+        price: 542,
+        socialMediaCount: 377
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-12',
+        price: 833,
+        socialMediaCount: 314
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-12',
+        price: 904,
+        socialMediaCount: 381
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-12',
+        price: 228,
+        socialMediaCount: 338
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-11',
+        price: 640,
+        socialMediaCount: 116
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-11',
+        price: 338,
+        socialMediaCount: 385
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-11',
+        price: 119,
+        socialMediaCount: 233
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-11',
+        price: 945,
+        socialMediaCount: 175
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-11',
+        price: 337,
+        socialMediaCount: 72
+      },
+      {
+        stockSymbol: 'Amazon',
+        date: '2022-09-10',
+        price: 843,
+        socialMediaCount: 486
+      },
+      {
+        stockSymbol: 'Google',
+        date: '2022-09-10',
+        price: 135,
+        socialMediaCount: 497
+      },
+      {
+        stockSymbol: 'Tesla',
+        date: '2022-09-10',
+        price: 502,
+        socialMediaCount: 83
+      },
+      {
+        stockSymbol: 'NVDIA',
+        date: '2022-09-10',
+        price: 258,
+        socialMediaCount: 303
+      },
+      {
+        stockSymbol: 'flipkart',
+        date: '2022-09-10',
+        price: 420,
+        socialMediaCount: 196
+      }
    
 ]
 

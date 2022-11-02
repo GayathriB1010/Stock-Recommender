@@ -17,7 +17,6 @@ test('Test input values', () => {
 test('Test output algorithm based on stock symbol', () => {
   render(<App />);
   const button = document.getElementById("submit");
-  console.log(button)
   fireEvent.click(button)
   const output = document.getElementById("test");
   expect(output.innerHTML).toBe("Hi")

@@ -11,15 +11,13 @@
 		//Loop through the past days from the selected stocks array to find the total stock price
         let firstItemToFindEMA = arrayIndex + (parseInt(timeWindow)-1);
 		for (let historicIndex = firstItemToFindEMA;historicIndex <firstItemToFindEMA + days; historicIndex++) {
-            console.log(historicIndex);
-            console.log(firstItemToFindEMA+days);
 			sum += selectedStocks[historicIndex].price;
 		}
 		previousEMA = sum / days;
         EMA.push(previousEMA);
         selectedStocks[firstItemToFindEMA][keyName] = previousEMA;
         selectedStocks[firstItemToFindEMA]["MACD"] = selectedStocks[firstItemToFindEMA]["12dayEMA"] - selectedStocks[firstItemToFindEMA]["26dayEMA"];
-		return emaCalculatingFn(days, selectedStocks,firstItemToFindEMA,timeWindow,arrayIndex,keyName);
+		return emaCalculatingFn(days, selectedStocks,firstItemToFindEMA,timeWindow,arrayIndex,keyName).slice(0,(parseInt(timeWindow)));
 	};
 
     
@@ -34,7 +32,6 @@
         //Loop to iterate through all the stock prices for the given time window and to calculate EMA for each date.
         let maximumIndexOfElement  = parseInt(firstItemToFindEMA)+parseInt(timeWindow);
         for(let i = firstItemToFindEMA-1;i >= arrayIndex;i--){
-            console.log(selectedStocks[i])
             todaysClosingPrice = selectedStocks[i].price;
             todaysEMA = todaysClosingPrice * k + previousEMA * (1 - k);
             selectedStocks[i][keyName] = todaysEMA;
@@ -46,10 +43,10 @@
             }
         }
         let selectedStocksWithTimeRange = selectedStocks.filter((stock) => stock["12dayEMA"] != null);
-		return selectedStocksWithTimeRange;
+		return selectedStocksWithTimeRange.slice(0,(parseInt(timeWindow)));
 	};
 
-    //Calculate signal
+    //Calculate signal. Signal line is the signal line which is the 9 day EMA of the MACD
     export const calculateSignal = (selectedStocks,timeWindow) =>{
         let lengthofArray = selectedStocks.length;
         let MACDAvg = 0;
@@ -67,7 +64,54 @@
             selectedStocks[i]["signal"] = todaysSignal;
             MACDAvg = todaysSignal;
         }
-        return selectedStocks;
+        return selectedStocks.slice(0,(parseInt(timeWindow)));
+    }
+
+    export const recommendationsusingMACDfn = (selectedStocks,timeWindow) =>{
+        for(let i=0; i<selectedStocks.length; i++){
+            if(selectedStocks[i]["MACD"] < selectedStocks[i]["signal"]){
+                selectedStocks[i]["recommendationusingMACD"] = "sell"
+            }
+            else{
+                selectedStocks[i]["recommendationusingMACD"] = "buy"
+            }
+        }
+        return selectedStocks.slice(0,(parseInt(timeWindow)));;
+    }
+
+    export const recommendationSocialMediaFn = (selectedStocks,timeWindow) =>{
+        let socialMediaCountAvg = 0;
+        let sum = 0;
+        selectedStocks.forEach((stock) =>{
+            sum += stock.socialMediaCount;
+        })
+        socialMediaCountAvg = sum/selectedStocks.length;
+        for(let i=0; i<selectedStocks.length; i++){
+            if(selectedStocks[i]["socialMediaCount"] < socialMediaCountAvg){
+                selectedStocks[i]["socialMediaRecommendation"] = "Negative"
+            }
+            else{
+                selectedStocks[i]["socialMediaRecommendation"] = "Positive"
+            }
+        }
+        return selectedStocks.slice(0,(parseInt(timeWindow)));;
+    }
+
+    export const finalRecommendationFn = (selectedStocks,timeWindow) =>{        for(let i=0; i<selectedStocks.length; i++){
+            if((selectedStocks[i]["recommendationusingMACD"] === "buy") && (selectedStocks[i]["socialMediaRecommendation"] === "Positive")){
+                selectedStocks[i]["FinalRecommendation"] = "Strong Buy";
+            }
+            else if((selectedStocks[i]["recommendationusingMACD"] === "buy") && (selectedStocks[i]["socialMediaRecommendation"] === "Negative")){
+                selectedStocks[i]["FinalRecommendation"] = "Hold";
+            }
+            else if((selectedStocks[i]["recommendationusingMACD"] === "sell") && (selectedStocks[i]["socialMediaRecommendation"] === "Positive")){
+                selectedStocks[i]["FinalRecommendation"] = "Hold";
+            }
+            else if((selectedStocks[i]["recommendationusingMACD"] === "sell") && (selectedStocks[i]["socialMediaRecommendation"] === "Negative")){
+                selectedStocks[i]["FinalRecommendation"] = "Sell";
+            }
+        }
+        return selectedStocks.slice(0,(parseInt(timeWindow)));;
     }
     	//Calculate the smoothing factor based on number of days. For 12 days EMA, 26 days EMA and signal
 	const calculateSmoothingFactor = (days) => {
