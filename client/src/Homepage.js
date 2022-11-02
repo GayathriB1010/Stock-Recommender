@@ -52,16 +52,19 @@ const Homepage = () => {
 					/>
 				</StartDate>
 				<StockSymbol>
+					<Label>
 					<label className="stockSymbol">Stock Symbol</label>
-					<Input
-						type="text"
-						className="stockSymbol"
-                        id="stockSymbol"
-						onChange={(e) => {
-							setStockSymbol(e.target.value);
-						}}
-						required
-					/>
+					</Label>
+					<SelectDiv>
+					<Select id="stockSymbol" value={stockSymbol} onChange = {(e) => setStockSymbol(e.target.value)}>
+						<option selected="selected" disabled>Select a stock symbol</option>
+						<option>Amazon</option>
+						<option>Google</option>
+						<option>NVDIA</option>
+						<option>flipkart</option>
+						<option>Tesla</option>
+					</Select>
+					</SelectDiv>
 				</StockSymbol>
 				<SubmitButton>
 					<Button disabled={timeWindow>25 || timeWindow<1} type="submit" id="submit">Submit</Button>
@@ -79,7 +82,10 @@ const Wrapper = styled.div`
 `;
 const StartDate = styled.div``;
 const EndDate = styled.div``;
-const StockSymbol = styled.div``;
+const StockSymbol = styled.div`
+display:flex;
+flex-direction:column;
+`;
 
 const Input = styled.input`
 width: 100%;
@@ -108,10 +114,18 @@ const SubmitButton = styled.div``;
 const Button = styled.button`
 outline: none;
 background: transparent;
+margin-top:10px;
 `;
 const H3 = styled.h3`
 margin-left:10px;
 margin-bottom:10px;
 font: 400 1rem Verdana, Geneva, Tahoma, sans-serif;
+`
+const Select = styled.select`
+`
+const Label = styled.div`
+`
+const SelectDiv = styled.div`
+margin-top:10px;
 `
 export default Homepage;

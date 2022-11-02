@@ -67,6 +67,7 @@
         return selectedStocks.slice(0,(parseInt(timeWindow)));
     }
 
+    //When the MACD crosses above the signal line then it is time to buy the stock. This is a bullish sign. 
     export const recommendationsusingMACDfn = (selectedStocks,timeWindow) =>{
         for(let i=0; i<selectedStocks.length; i++){
             if(selectedStocks[i]["MACD"] < selectedStocks[i]["signal"]){
@@ -79,6 +80,7 @@
         return selectedStocks.slice(0,(parseInt(timeWindow)));;
     }
 
+    //For the social media recommendation, socialmedia average is calculated. If the count is greater than average, its considered positive. Else its negative
     export const recommendationSocialMediaFn = (selectedStocks,timeWindow) =>{
         let socialMediaCountAvg = 0;
         let sum = 0;
@@ -97,6 +99,7 @@
         return selectedStocks.slice(0,(parseInt(timeWindow)));;
     }
 
+    //For the final recommendation, both the MACD indicator and social media recommendation is considered
     export const finalRecommendationFn = (selectedStocks,timeWindow) =>{        for(let i=0; i<selectedStocks.length; i++){
             if((selectedStocks[i]["recommendationusingMACD"] === "buy") && (selectedStocks[i]["socialMediaRecommendation"] === "Positive")){
                 selectedStocks[i]["FinalRecommendation"] = "Strong Buy";

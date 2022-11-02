@@ -31,14 +31,14 @@ const StocksTable = (stocksArrayAfterCalculation) =>{
    return (
         <>
         <H4>Today's Stock Recommendation for {stocksArrayAfterCalculation.stocksToDisplay[0].stockSymbol} is {stocksArrayAfterCalculation.stocksToDisplay[0].FinalRecommendation}</H4>
-        <Table>
+        <Table id="stocksTable">
           <TableRow>
             {Object.keys(stocksArrayAfterCalculation.stocksToDisplay[0]).map((key) => (
               <TableHeader>{key}</TableHeader>
             ))}
           </TableRow>
           {stocksArrayAfterCalculation.stocksToDisplay.map((item) => (
-            <TableRow key={item.id}>
+            <TableRow key={item.id}> 
               {Object.values(item).map((val) => (
                   typeof(val) === "number"?<TableData>{parseFloat(val).toFixed(2)}</TableData>:<TableData>{val}</TableData>
               ))}
